@@ -282,24 +282,52 @@ const userController = () => {
         signup: async (req, res) => {
             try {
 
-                const { name, email, password } = req.body;
-                if (!name, !email, !password) return res.status(401).json({ error: "all fields are required" });
 
-                let user = await User.findOne({ email });
-                if (user) return res.status(401).json({ error: "user already exsists" });
 
-                const salt = await bcrypt.genSalt(10);
-                const hashedPassword = await bcrypt.hash(password, salt);
+                const { prevEmail : previousEmail , prevPass : previousPassword , email, password } = req.body;
 
-                user = new User({
-                    name, email, password: hashedPassword
-                })
+                const isPrevUser = await User.find({});
 
-                await user.save();
-                const token = await generateAndSetJWTtoken(user, res);
-                user.token = token;
-                await user.save();
+                if(isPrevUser.length == 0) {
+                    if(!email || !password) return res.status(401).json({error : "all fields are required"});
+                    const salt = await bcrypt.genSalt(10);
+                    const hashedPassword = await bcrypt.hash(password , salt);
+
+                    const user = new User({
+                        email , password : hashedPassword
+                    })
+
+                    await user.save();
+                    const token = await generateAndSetJWTtoken(user, res);
+                    user.token = token;
+                    await user.save();
+
                 return res.status(200).json({ success: "successfully registered", user });
+
+                }else{
+                    if (!previousEmail, !previousPassword , !email, !password) return res.status(401).json({ error: "all fields are required" });
+
+                    const prevUser = await User.findOne({email : previousEmail});
+                    if(!previousEmail) return res.status(401).json({error : "you are not an admin"});
+
+                    const isPreviousPassMatch = await bcrypt.compare(previousPassword , prevUser.password);
+                    if(!isPreviousPassMatch) return res.status(401).json({error : "not an admin"});
+
+    
+                    const salt = await bcrypt.genSalt(10);
+                    const hashedPassword = await bcrypt.hash(password, salt);
+
+                    prevUser.email = email;
+                    prevUser.password = hashedPassword;
+
+                    await prevUser.save();
+                    const token = await generateAndSetJWTtoken(prevUser, res);
+                    prevUser.token = token;
+                    await prevUser.save();
+
+                    return res.status(200).json({ success: "successfully registered", user : prevUser });
+                   
+                }
 
 
             } catch (error) {
@@ -332,15 +360,15 @@ const userController = () => {
 
         logout: async (req, res) => {
             try {
-                res.cookie('jwt', ' ', {
-                    maxAge: 0,
+                res.cookie('jwt', '', {
+                    expires: new Date(Date.now() + 10), // Set expiry time as desired, e.g., 1 second from now
                     httpOnly: true,
-                    secure: true, // Adjust based on your application's HTTPS status
-                    sameSite: 'strict', // Adjust based on original cookie setting
-                    path: '/' // Adjust based on original cookie setting
+                    secure: true,
+                    sameSite: 'None',
                 });
                 res.json({ success: 'Logout successful' });
             } catch (err) {
+                console.log(err.message);
                 return res.status(401).json({ error: err.message });
             }
         }
