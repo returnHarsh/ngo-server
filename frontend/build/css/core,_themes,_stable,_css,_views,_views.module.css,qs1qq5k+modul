@@ -1,0 +1,654 @@
+/* table style column align */
+.views-align-left {
+  text-align: left;
+}
+.views-align-right {
+  text-align: right;
+}
+.views-align-center {
+  text-align: center;
+}
+/* Grid style column align. */
+.views-view-grid .views-col {
+  float: left;
+}
+.views-view-grid .views-row {
+  float: left;
+  clear: both;
+  width: 100%;
+}
+/* Provide some space between display links. */
+.views-display-link + .views-display-link {
+  margin-left: 0.5em;
+}
+/**
+ * @file
+ * Webform form styles.
+ */
+
+/**
+ * This allows components to be hidden when a JS plugin provides the UI.
+ */
+html.js .js-webform-visually-hidden,
+html.js .js-webform-visually-hidden[style*="display: none"] {
+  display: inline !important;
+  position: absolute !important;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  width: 1px;
+  height: 1px;
+  word-wrap: normal;
+}
+
+/**
+ * Element states.
+ * @see \Drupal\webform\WebformSubmissionConditionsValidator::buildForm
+ * @see \Drupal\webform\Utility\WebformElementHelper::fixStatesWrapper
+ * @see \Drupal\webform\Plugin\WebformElement\TextFormat::preRenderFixTextFormatStates
+ * @see text-format-wrapper.html.twig
+ */
+.js-form-item.js-webform-states-hidden,
+.js-form-submit.js-webform-states-hidden,
+.js-form-wrapper.js-webform-states-hidden,
+.js-webform-text-format-hidden > .js-text-format-wrapper {
+  display: none;
+}
+
+/**
+ * Container inline
+ */
+.form-item .container-inline {
+  margin: 2px 0;
+}
+
+/**
+ * Issue #2731991: Setting required on radios marks all options required.
+ */
+.form-checkboxes .form-required:after,
+.form-radios .form-required:after {
+  display: none;
+}
+
+/**
+ * Element title inline.z
+ */
+.webform-element--title-inline > label {
+  display: inline;
+  padding-right: 0.5em;
+}
+
+.webform-element--title-inline > div.container-inline {
+  display: inline;
+}
+
+/**
+ * Fieldset title inline.
+ * Applies to radios, checkboxes, and buttons. (aka .form-composite)
+ * @see \Drupal\webform\Plugin\WebformElement\OptionsBase::prepare
+ * @see webform_preprocess_fieldset()
+ */
+.form-composite.webform-fieldset--title-inline legend {
+  float: left; /* LTR */
+  margin: 0.4em 0.5em 0.4em 0; /* LTR */
+}
+
+[dir=rtl] .form-composite.webform-fieldset--title-inline legend {
+  float: right; /* RTL */
+  margin-right: 0; /* RTL */
+  margin-left: 0.5em; /* RTL */
+}
+
+.form-composite.webform-fieldset--title-inline .fieldset-wrapper,
+.form-composite.webform-fieldset--title-inline .fieldset-wrapper > div {
+  display: inline;
+}
+
+/**
+ * Checkboxes and radios title inline.
+ */
+.webform-element--title-inline .form-radios,
+.webform-element--title-inline .form-checkboxes {
+  display: inline;
+}
+
+/**
+ * Readonly inputs. (@see .form-disabled)
+ * @see https://www.wufoo.com/html5/attributes/21-readonly.html
+ */
+.webform-readonly input[type="date"],
+.webform-readonly input[type="datetime-local"],
+.webform-readonly input[type="email"],
+.webform-readonly input[type="number"],
+.webform-readonly input[type="password"],
+.webform-readonly input[type="search"],
+.webform-readonly input[type="tel"],
+.webform-readonly input[type="text"],
+.webform-readonly input[type="time"],
+.webform-readonly input[type="url"],
+.webform-readonly textarea {
+  color: #717171;
+  border-color: #bbb;
+  background: #ededed;
+}
+/**
+ * @file
+ * Message element styles.
+ *
+ * @see /webform/test_element_message
+ */
+
+/**
+ * Add styles to default (info) message,
+ */
+.messages.messages--info {
+  color: #31708f;
+  border-color: #0074bd #0074bd #0074bd transparent; /* LTR */
+  background-color: #d9edf7;
+  background-image: url(modules/contrib/webform/images/icons/info.svg);
+  background-repeat: no-repeat;
+  background-position: 10px 17px;
+  box-shadow: -8px 0 0 #0074bd; /* LTR */
+}
+[dir="rtl"] .messages.messages--info {
+  margin-left: 0;
+  border-color: #0074bd transparent #0074bd #0074bd;
+  box-shadow: 8px 0 0 #0074bd;
+}
+
+/**
+ * Webform message close container.
+ */
+.webform-message--close .messages {
+  position: relative;
+}
+
+/**
+ * Webform message close link.
+ */
+.webform-message--close .messages {
+  padding-right: 35px;
+}
+
+.webform-message--close .webform-message__link {
+  display: none;
+}
+
+html.js .webform-message--close .webform-message__link {
+  position: absolute;
+  top: 11px;
+  right: 10px;
+  display: block;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+html[dir="rtl"].js .webform-message--close .webform-message__link {
+  top: 11px;
+  right: inherit;
+  left: 10px;
+}
+
+.webform-message__link {
+  opacity: 0.33;
+  color: inherit;
+}
+
+.webform-message__link:link {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.webform-message__link:hover,
+.webform-message__link:focus,
+.webform-message__link:active {
+  text-decoration: none;
+  opacity: 1;
+  color: inherit;
+  border-bottom: none;
+}
+
+html.js .js-webform-message--close-storage {
+  display: none;
+}
+/**
+ * @file
+ * Styles for uc_order module.
+ */
+
+.view-uc-orders .form-item {
+  padding-top: 4px;
+}
+
+.view-uc-orders #edit-order-id {
+  width: 10em;
+}
+
+.view-uc-orders #edit-delivery-first-name-wrapper,
+.view-uc-orders #edit-created-wrapper {
+  clear: left; /* LTR */
+}
+[dir="rtl"] .view-uc-orders #edit-delivery-first-name-wrapper,
+[dir="rtl"] .view-uc-orders #edit-created-wrapper {
+  clear: right;
+}
+
+.view-uc-orders #edit-created-min-wrapper,
+.view-uc-orders #edit-created-max-wrapper {
+  float: left; /* LTR */
+}
+[dir="rtl"] .view-uc-orders #edit-created-min-wrapper,
+[dir="rtl"] .view-uc-orders #edit-created-max-wrapper {
+  float: right;
+}
+
+.view-uc-orders .form-type-date-select .date-padding {
+  padding: 0 22px 0 0; /* LTR */
+}
+[dir="rtl"] .view-uc-orders .form-type-date-select .date-padding {
+  padding: 0 0 0 22px;
+}
+
+.view-uc-orders .form-type-date-select {
+  padding-top: 0;
+}
+
+.order-pane {
+  border: 1px solid #bbb;
+  line-height: 1.1em;
+  margin: .5em;
+  padding: .5em;
+  position: relative;
+}
+
+.order-pane-icons {
+  position: absolute;
+  right: .5em; /* LTR */
+  top: 5px;
+}
+[dir="rtl"] .order-pane-icons {
+  right: auto;
+  left: .5em;
+}
+
+.order-pane-icons img {
+  cursor: pointer;
+}
+
+.order-pane-title {
+  font-weight: bold;
+  padding-bottom: .5em;
+}
+
+.order-pane.pos-left {
+  float: left; /* LTR */
+  clear: right; /* LTR */
+}
+[dir="rtl"] .order-pane.pos-left {
+  float: right;
+  clear: left;
+}
+
+.order-pane.pos-right {
+  float: right; /* LTR */
+  clear: left; /* LTR */
+}
+[dir="rtl"] .order-pane.pos-right {
+  float: left;
+  clear: right;
+}
+
+.order-pane.abs-left {
+  border: 0;
+  clear: both;
+  padding: .5em 0;
+}
+
+.order-pane.abs-left .form-submit {
+  margin: 0.5em 0.5em 0.5em 0; /* LTR */
+}
+[dir="rtl"] .order-pane.abs-left .form-submit {
+  margin: 0.5em 0 0.5em 0.5em;
+}
+
+.uc-order-edit-form .form-actions {
+  clear: both;
+}
+
+.order-pane #edit-add-line-item,
+.order-pane #edit-add-line-item .form-item {
+  float: left; /* LTR */
+  margin-right: 1em; /* LTR */
+  padding-top: 0;
+}
+[dir="rtl"] .order-pane #edit-add-line-item,
+[dir="rtl"] .order-pane #edit-add-line-item .form-item {
+  float: right;
+  margin-right: auto;
+  margin-left: 1em;
+}
+
+.order-pane .line-item-table {
+  float: right;
+  width: auto;
+}
+
+.order-pane-table th {
+  padding: 4px 8px;
+}
+
+.order-pane-table td {
+  padding: 4px 8px;
+  vertical-align: top;
+}
+
+.order-pane-table td.qty,
+.order-pane-table td.sku {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.order-pane-table td.product {
+  width: 80%;
+}
+
+.order-pane-table td.cost,
+.order-pane-table td.price,
+.order-pane-table td.total {
+  text-align: right; /* LTR */
+  white-space: nowrap;
+}
+[dir="rtl"] .order-pane-table td.cost,
+[dir="rtl"] .order-pane-table td.price,
+[dir="rtl"] .order-pane-table td.total {
+  text-align: left;
+}
+
+#order-edit-products .form-remove {
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.uc-order-comments td {
+  vertical-align: top;
+}
+
+.uc-order-comments .date {
+  width: 25%;
+  text-align: left; /*LTR */
+}
+[dir="rtl"] .uc-order-comments .date {
+  text-align: right;
+}
+
+.uc-order-comments .user,
+.uc-order-comments .notified,
+.uc-order-comments .status {
+  text-align: center;
+}
+
+.uc-order-comments .message {
+  width: 80%;
+}
+
+.address-select-box {
+  background-color: #ddd;
+  border: solid 1px #999;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  padding-left: 1em; /* LTR */
+  width: auto;
+}
+[dir="rtl"] .address-select-box {
+  padding-left: inherit;
+  padding-right: 1em;
+}
+
+.customer-select-box {
+  background-color: #ddd;
+  border: solid 1px #999;
+  margin-top: 1em;
+  padding: 1em;
+  width: auto;
+}
+
+.line-item-table {
+  width: 100%;
+}
+
+.line-item-table td {
+  padding: 2px;
+}
+
+.line-item-table .li-title {
+  font-weight: bold;
+  text-align: right; /* LTR */
+  width: auto;
+}
+[dir="rtl"] .line-item-table .li-title {
+  text-align: left;
+}
+
+.line-item-table .li-amount {
+  text-align: right; /* LTR */
+  white-space: nowrap;
+}
+[dir="rtl"] .line-item-table .li-amount {
+  text-align: left;
+}
+
+.line-item-table .form-item {
+  display: inline;
+}
+
+.order-pane-table .product-description {
+  font-size: .7em;
+}
+
+/* Move to uc_credit.css eventually... */
+.order-pane #uc-credit-order-view-form {
+  margin-bottom: 0;
+  margin-top: .5em;
+}
+
+#uc-credit-order-view-form .form-submit {
+  margin: 0;
+}
+
+#uc-order-view-update-form #edit-controls label {
+  display: inline;
+}
+
+#uc-order-view-update-form #edit-controls .form-type-checkbox {
+  padding-top: 8px;
+}
+
+#uc-order-view-update-form .form-actions {
+  clear: left; /* LTR */
+}
+[dir="rtl"] #uc-order-view-update-form .form-actions {
+  clear: right;
+}
+
+.address-select-box #uc-order-address-book-form {
+  margin-bottom: 0;
+}
+
+.order-pane #customer-select form {
+  margin-bottom: 0;
+}
+
+#order-pane-print_button {
+  border: 1px solid #bbb;
+  padding: 0.5em 0.5em 0.5em 2em; /* LTR */
+  background: url("modules/contrib/ubercart/uc_store/images/print.gif") no-repeat 0.5em 50%;
+}
+[dir="rtl"] #order-pane-print_button {
+  padding: 0.5em 2em 0.5em 0.5em;
+}
+/**
+ * @file
+ * Styles for uc_product module.
+ */
+
+.uc-product-image {
+  overflow: auto;
+  width: 100%;
+}
+
+.uc-product-image .field-item + .field-item img {
+  float: left; /* LTR */
+  margin-right: 1em; /* LTR */
+}
+[dir="rtl"] .uc-product-image .field-item + .field-item img {
+  float: right;
+  margin-right: auto;
+  margin-left: 1em;
+}
+
+.display-price {
+  clear: right; /* LTR */
+  float: right; /* LTR */
+  font-size: 1.3em;
+  font-weight: bold;
+  padding-bottom: 4px;
+  padding-left: 4px; /* LTR */
+  text-align: center;
+}
+[dir="rtl"] .display-price {
+  clear: left;
+  float: left;
+  padding-left: inherit;
+  padding-right: 4px;
+}
+
+.uc-product-features td {
+  vertical-align: top;
+}
+
+/**
+ * Styles for uc_attribute.
+ */
+.combinations .form-item {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Styles for uc_role.
+ */
+.expiration {
+  display: inline;
+}
+
+.expiration .form-item {
+  display: inline;
+}
+/**
+ * @file
+ * Styles for uc_product_kit module.
+ */
+
+#block-cart-contents .kit-component-cart-desc ul.product-description {
+  padding-left: 0; /* LTR */
+}
+[dir="rtl"] #block-cart-contents .kit-component-cart-desc ul.product-description {
+  padding-left: inherit;
+  padding-right: 0;
+}
+
+#block-cart-contents .product-description .kit-component-cart-desc ul:before {
+  margin-right: 0.15em; /* LTR */
+}
+[dir="rtl"] #block-cart-contents .product-description .kit-component-cart-desc ul:before {
+  margin-right: auto;
+  margin-left: 0.15em;
+}
+
+.kit-component-cart-desc .item-list li {
+  background: transparent none;
+  display: inline;
+  font-size: 1em;
+  font-style: italic;
+  padding-left: 0; /* LTR */
+}
+[dir="rtl"] .kit-component-cart-desc .item-list li {
+  padding-left: inherit;
+  padding-right: 0;
+}
+.kit-component-cart-desc li:after {
+  content: ", ";
+}
+.kit-component-cart-desc li:last-child:after {
+  content: "";
+}
+/**
+ * @file
+ * Styles for uc_store module.
+ */
+
+.uc-price {
+  white-space: nowrap;
+}
+
+input.form-uc-price {
+  width: 8em;
+}
+input.form-uc-quantity {
+  width: 4em;
+}
+
+.uc-inline-form .form-item {
+  float: left; /* LTR */
+  margin-right: 1em; /* LTR */
+  padding-top: 5px;
+}
+[dir="rtl"] .uc-inline-form .form-item {
+  float: right;
+  margin-right: auto;
+  margin-left: 1em;
+}
+
+.uc-default-submit {
+  height: 0;
+  left: -9999px; /* LTR */
+  position: absolute;
+  top: -9999px;
+  width: 0;
+}
+[dir="rtl"] .uc-default-submit {
+  left: auto;
+  right: -9999px;
+}
+
+/**
+ * CSS rules for address fields.
+ */
+.uc-store-address-field .form-item {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.uc-store-address-field .form-item label {
+  float: left; /* LTR */
+  margin-top: 6px;
+  padding-right: 0.75em; /* LTR */
+  text-align: right; /* LTR */
+  width: 10em;
+}
+[dir="rtl"] .uc-store-address-field .form-item label {
+  float: right;
+  padding-right: inherit;
+  padding-left: 0.75em;
+  text-align: left;
+}
+
+/**
+ * Toolbar icon.
+ */
+.toolbar-icon-uc-store-admin-store:before {
+  background-image: url(modules/contrib/ubercart/uc_store/icons/787878/cart.svg);
+}
+.toolbar-icon-uc-store-admin-store:active:before,
+.toolbar-icon-uc-store-admin-store.active:before {
+  background-image: url(modules/contrib/ubercart/uc_store/icons/000000/cart.svg);
+}
