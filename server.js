@@ -40,14 +40,14 @@ app.use("/api" , Router);
 
 
 app.use(express.static(path.join(__dirname , "/frontend/build")));
-app.get("*", function(_, res) { 
+// app.get("*", function(_, res) { 
  
-  try{
-    res.sendFile(path.join(__dirname , "/frontend" , "/build" , "/index.html"));
-  }catch(err){
-    console.log(err.message);
-  }
-  });
+//   try{
+//     res.sendFile(path.join(__dirname , "/frontend" , "/build" , "/index.html"));
+//   }catch(err){
+//     console.log(err.message);
+//   }
+//   });
 
 
   
