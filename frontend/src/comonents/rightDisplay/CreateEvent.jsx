@@ -25,11 +25,12 @@ import DatePicker from 'react-datepicker';
 import { CiCalendarDate } from "react-icons/ci";
 import { monthConverter } from "./dateConverter";
 import { IoMdAddCircle } from "react-icons/io";
+import { IoIosCloseCircle } from "react-icons/io";
 import { Context } from '../../context/Context';
 import useToast from "../../hooks/useToast";
 
 
-const CreateEvent = ({ setTotalEvents }) => {
+const CreateEvent = ({ setTotalEvents , setEvents }) => {
 
     const{showSuccess , showError} = useToast();
     const{user} = useContext(Context);
@@ -139,6 +140,12 @@ const CreateEvent = ({ setTotalEvents }) => {
 
             showSuccess(data.success);
 
+            setEvents(prev=>{
+                return [...prev , data.event];
+            })
+
+            
+
             onClose();
 
 
@@ -160,19 +167,19 @@ const CreateEvent = ({ setTotalEvents }) => {
                     <ModalOverlay />
                     <ModalContent>
                         <ModalHeader> Upload image into Gallery </ModalHeader>
-                        <ModalCloseButton />
+                        <ModalCloseButton  onClick={()=> onClose()} />
 
                         <ModalBody display={"flex"} flexDirection={"column"} gap={"10px"}>
 
 
                             <Flex alignItems={"center"} gap={"20px"}>
                                 <Text color={"blue"} textDecor={"underline"}> Event title picture </Text>
-                                <input ref={imageRef} onChange={handleImageChange} type="file" hidden />
+                                <input ref={imageRef} onChange={handleImageChange} type="file" accept='image/*'  hidden />
                                 <CiImageOn  onClick={()=> imageRef.current.click()}  cursor={"pointer"} size={"20px"} />
                             </Flex>
 
                             <Flex>
-                            <Image src={previewImage} alt={previewImage} />
+                            <Image src={previewImage} alt={previewImage} flex={"1"} />
                             </Flex>
 
                             <Flex flexDirection={"column"} gap={"10px"}>

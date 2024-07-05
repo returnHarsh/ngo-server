@@ -8,6 +8,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import Events from "./Events";
 import Blogs from "./Blogs";
 import Gallery from "./Gallery";
+import Cause from "./Cause";
 
 
 const Front=()=>{
@@ -98,8 +99,11 @@ const Front=()=>{
      
       
   
+
+  {/* causes section */}
+  <Cause/>
   
-      <section className="ftco-section bg-light">
+      {/* <section className="ftco-section bg-light">
           <div className="container-fluid">
               <div className="row justify-content-center mb-5 pb-3">
             <div className="col-md-5 heading-section  text-center">
@@ -203,7 +207,7 @@ const Front=()=>{
           </div>
           
       </section>
-      
+       */}
   
       <section className="ftco-section">
         <div className="container">

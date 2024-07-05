@@ -174,11 +174,8 @@ const Nav = () => {
                                                                 </li>
                                                             </ul>
                                                         </li>
-                                                        <li><a href="/contact">contact</a>
-
-
-
-                                                        </li>
+                                                        <li><a href="/contact">contact</a></li>
+                                                        <li> <a href='/admin'>Admin </a> </li>
                                                     </ul>
                                                 </nav>
                                             </div>

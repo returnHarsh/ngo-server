@@ -163,7 +163,7 @@ const userController = () => {
 
                 await event.save();
 
-                return res.status(200).json({ success: "new event created" });
+                return res.status(200).json({ success: "new event created" , event });
 
             } catch (err) {
 
@@ -370,6 +370,18 @@ const userController = () => {
             } catch (err) {
                 console.log(err.message);
                 return res.status(401).json({ error: err.message });
+            }
+        },
+
+        deleteEvent : async(req,res)=>{
+            try{
+
+                const{eventId} = req.params;
+                await Event.deleteOne({_id : eventId});
+                return res.json({success : "event deleted successfully"});
+
+            }catch(err){
+                return res.status(402).json({err : err.message});
             }
         }
 

@@ -25,6 +25,7 @@ import DatePicker from 'react-datepicker';
 import { CiCalendarDate } from "react-icons/ci";
 import { monthConverter } from "./dateConverter";
 import { IoMdAddCircle } from "react-icons/io";
+import { IoIosCloseCircle } from "react-icons/io";
 import {Context} from "../../context/Context";
 import useToast from "../../hooks/useToast";
 
@@ -42,9 +43,9 @@ const CreateBlog = ({blogs , setBlogs , setTotalBlogs}) => {
       const imageRef = useRef();
       const[imageFile , setImageFile] = useState(null);
       const [eventDate, setEventDate] = useState({
-          day: 0,
-          month: 0,
-          year: 0
+          day: undefined,
+          month: undefined,
+          year: undefined
       })
   
       const [eventDetail , setEventDetail] = useState({
@@ -125,9 +126,14 @@ const CreateBlog = ({blogs , setBlogs , setTotalBlogs}) => {
                 return prev+1;
               })
 
-              
+              setPreviewImage(null);
 
-              console.log(data);
+              setEventDate({
+                day : undefined,
+                month : undefined,
+                year : undefined
+              })
+
               onClose();
 
   
@@ -140,8 +146,13 @@ const CreateBlog = ({blogs , setBlogs , setTotalBlogs}) => {
           }
       }
 
+      const handleCutImage = ()=>{
+        setPreviewImage(null);
+        imageRef.current.value = '';
+      }
+
   return (
-    <div className='fixed bottom-[10px] right-[10px]'>
+    <div className='fixed bottom-[10px] right-[5px]'>
     <Button onClick={onOpen}  fontSize={{base : "12px" , md : "15px"}} padding={{base : "4px" , md : "10px"}} position={"absolute"} _hover={{ bg: "green.300" }} right={"10px"} bottom={"20px"} bg={"green.400"} color={"white"} px={"15px"} > Add Blog<span className="flex justify-center items-center scale-[1.5] m-[10px]" > <IoMdAddCircle className='text-[14px] md:text-[18px] text-white' />   </span> </Button>
     <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -158,7 +169,8 @@ const CreateBlog = ({blogs , setBlogs , setTotalBlogs}) => {
                     <CiImageOn  onClick={()=> imageRef.current.click()}  cursor={"pointer"} size={"20px"} />
                 </Flex>
 
-                <Flex>
+                <Flex  flexDir={"column"} >
+               { previewImage  &&  <IoIosCloseCircle onClick={handleCutImage} size={"25px"} className='ml-auto hover:text-red-500' cursor={"pointer"}  /> }
                 <Image src={previewImage} alt={previewImage} />
                 </Flex>
 

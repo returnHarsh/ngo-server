@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
+    "date-fns": "^3.6.0",
     "framer-motion": "^11.2.12",
     "google-maps-react": "^2.0.6",
     "react": "^18.2.0",
@@ -50,7 +51,6 @@
     ]
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.4",
-    "@babel/plugin-proposal-private-property-in-object": "^1.0.6"
+    "tailwindcss": "^3.4.4"
   }
 }

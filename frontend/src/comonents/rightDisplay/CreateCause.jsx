@@ -99,6 +99,10 @@ const CreateCause = ({causes , setCauses , setTotalCauses}) => {
             return prev+1;
         })
 
+        setCauses(prev=>{
+            return [...prev , data.cause];
+        })
+
 
 
         setPreviewImage(null);

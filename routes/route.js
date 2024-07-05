@@ -14,6 +14,7 @@ router.post("/create/event" , auth , upload.single('file') , userController().cr
 router.delete("/blog/:blogId" , auth , userController().deleteBlog);
 router.post("/create/cause" , auth , upload.single("file") , userController().createCause);
 router.delete("/cause/:causeId" , auth , userController().deleteCause);
+router.delete("/event/:eventId" , auth , userController().deleteEvent);
 
 // admin login routes
 router.post("/admin/login" , userController().login);

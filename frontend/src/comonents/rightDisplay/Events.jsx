@@ -120,15 +120,15 @@ const Events = () => {
         <SimpleGrid boxSizing='border-box' p={"10px"} w={{ base: "70%", md: "60%", lg: "100%" }} minChildWidth={"250px"} spacing={"20px"}   >
 
           {events.map((event, index) => {
-            return <div onClick={()=> setDeleteActive(prev => !prev )} className='bg-white  w-[100%] flex flex-col justify-center items-center lg:max-w-[400px] shadow-md'>
+            return <div className='bg-white  w-[100%] flex flex-col justify-center items-center lg:max-w-[400px] shadow-md'>
 
               <div className={` ${deleteActivate ? "inline" : "hidden"} w-[100%] flex transition-all duration-500`}>
                 <MdCancel onClick={(e) => handleDelete(e, event)} cursor={"pointer"} size={"25px"} className='ml-auto transition-all duration-500  hover:text-red-500 ' />
               </div>
 
               {/* image part */}
-              <div className='w-[100%] h-auto md:h-[200px] lg:h-[220px]  flex justify-center items-center '>
-                <img className=' h-[100%] w-[100%] object-cover' src={event.img} alt={event.img}  />
+              <div className='w-[100%]  md:h-[220px] lg:h-[220px]  flex justify-center items-center '>
+                <img className='  h-[100%] w-[100%] object-cover' src={event.img} alt={event.img}  />
               </div>
 
               {/* details part */}
@@ -174,7 +174,7 @@ const Events = () => {
 
         </SimpleGrid>
       </div>
-      <CreateEvent setTotalEvents={setTotalEvents} />
+      <CreateEvent setTotalEvents={setTotalEvents} setEvents={setEvents} />
     </div>
   )
 }
