@@ -39,7 +39,7 @@ cloudinary.config({
 app.use("/api" , Router);
 
 
-app.use(express.static(path.join(__dirname , "/frontend/build")));
+// app.use(express.static(path.join(__dirname , "/frontend/build")));
 // app.get("*", function(_, res) { 
  
 //   try{
